@@ -13,4 +13,8 @@ class ChecksumBoxesTest extends org.scalatest.FunSuite {
   test("ChecksumBoxes.calculateChecksum gets correct checksum with one item") {
     assert(ChecksumBoxes.calculateChecksum(List("aabbbccddde")) === 1)
   }
+
+  test("ChecksumBoxes.readLablesFromFile can read a file and turn a list of box label strings") {
+      assert(ChecksumBoxes.readLablesFromFile("test.txt") === List("abcd", "aabbb"))
+  }
 }
