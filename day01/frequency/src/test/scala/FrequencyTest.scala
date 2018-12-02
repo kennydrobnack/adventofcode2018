@@ -11,4 +11,7 @@ class FrequencyTest extends org.scalatest.FunSuite {
   test("Frequency.calc returns the numbers summed up") {
     assert(Frequency.calc(List(0, 1, 2, 3, -6, -42)) === -42)
   }
+  test("Frequency.calc can read a file and turn a list of numbers one per line into a list of Ints") {
+      assert(Frequency.readNumbersFromFile("test.txt") === List(0, 1, 2, 3, -42))
+  }
 }
