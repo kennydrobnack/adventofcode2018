@@ -17,4 +17,12 @@ class ChecksumBoxesTest extends org.scalatest.FunSuite {
   test("ChecksumBoxes.readLablesFromFile can read a file and turn a list of box label strings") {
       assert(ChecksumBoxes.readLablesFromFile("test.txt") === List("abcd", "aabbb"))
   }
+
+  test("ChecksumBoxes.matchingLetters returns matching letters between two labels if only one mismatch") {
+    assert(ChecksumBoxes.matchingLetters("abcdef", "abcdff") === "abcdf")
+  }
+
+  test("ChecksumBoxes.matchingLetters returns empty string if more than one letter mismatched") {
+    assert(ChecksumBoxes.matchingLetters("abcdef", "zzcdef") === "")
+  }
 }

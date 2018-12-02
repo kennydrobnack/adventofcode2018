@@ -19,4 +19,23 @@ object ChecksumBoxes extends App {
   def readLablesFromFile(fileName: String): List[String] = {
     Source.fromFile(fileName).getLines.toList
   }
+
+  def matchingLetters(firstLabel: String, secondLabel: String): String = {
+    var matchingLetters = "".toArray
+    var mismatches = 0
+    var charNum = 0
+    for (c <- firstLabel) {
+      if (c != secondLabel.charAt(charNum)) {
+        mismatches = mismatches + 1
+      }
+      else {
+        matchingLetters :+= c
+      }
+      if (mismatches > 1) {
+        return ""
+      }
+      charNum = charNum + 1
+    }
+    matchingLetters.mkString
+  }
 }
