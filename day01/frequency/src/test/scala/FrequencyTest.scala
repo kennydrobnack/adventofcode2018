@@ -5,6 +5,9 @@ class FrequencyTest extends org.scalatest.FunSuite {
   test("Frequency.findDuplicate returns first dup when going through the list once") {
     assert(Frequency.findDuplicate(List(2, -4, 4)) == 2)
   }
+  test("Frequency.findDuplicate returns first dup when going through the list more than once") {
+    assert(Frequency.findDuplicate(List(3, 3, 4, -2, -4)) == 10)
+  }
   test("Frequency.calcFinalFrequency returns 0 with empty list") {
     assert(Frequency.calcFinalFrequency(List()) === 0)
   }
