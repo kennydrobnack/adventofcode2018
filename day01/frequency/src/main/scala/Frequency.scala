@@ -17,7 +17,7 @@ object Frequency extends App {
     var seenNumbers = Map[Int, Int]()
     seenNumbers = seenNumbers + (0 -> 1)
     var latestSeen = 0
-    while (seenNumbers.get(latestSeen) != 2) {
+    while (seenNumbers.getOrElse(latestSeen, 0) != 2) {
       for (number <- numbers) {
         latestSeen = latestSeen + number
         if (seenNumbers.contains(latestSeen)) {
