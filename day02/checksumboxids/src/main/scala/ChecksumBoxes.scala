@@ -6,6 +6,8 @@ object ChecksumBoxes extends App {
   println("Calculating box label checksum from file: " + filename)
   val labels = readLablesFromFile(filename)
   println(calculateChecksum(labels))
+  println("Figuring out boxes with near matches: ")
+  println(findCloseMatch(labels))
 
   def calculateChecksum(boxLabels: List[String]): Int = {
     val boxesWithTwoLettersRepeating = boxLabels.filter(b => letterOccursNumberOfTimesOnLabel(b, 2)).length
