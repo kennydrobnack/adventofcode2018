@@ -1,4 +1,5 @@
 import scala.io.Source
+import scala.collection.mutable.ListBuffer
 
 object ChecksumBoxes extends App {
   val filename = args(0)
@@ -36,6 +37,25 @@ object ChecksumBoxes extends App {
       }
       charNum = charNum + 1
     }
-    matchingLetters.mkString
+    val matchingLettersString = matchingLetters.mkString
+    println("Matching letters between " + firstLabel + " and " + secondLabel + " : " + matchingLettersString)
+    matchingLettersString
+  }
+
+  def findCloseMatch(boxLabels: List[String]): String = {
+    var boxLabelsBuffer = boxLabels.to[ListBuffer]
+    var labelToCheck = boxLabelsBuffer.remove(0)
+    var matchingLabel = Option("")
+    while (boxLabelsBuffer.length > 1) {
+      println("Checking to see if label has any near matches: "  + labelToCheck)
+      matchingLabel = boxLabelsBuffer.find(label => matchingLetters(labelToCheck, label).length == labelToCheck.length - 1)
+      val currentMatch = matchingLabel.getOrElse("")
+      if (currentMatch.length > 0) {
+        println("Current match: " + currentMatch)
+        return matchingLetters(labelToCheck, currentMatch)
+      }
+      labelToCheck = boxLabelsBuffer.remove(0)
+    }
+    ""
   }
 }

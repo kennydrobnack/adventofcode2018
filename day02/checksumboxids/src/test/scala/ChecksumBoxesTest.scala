@@ -25,4 +25,8 @@ class ChecksumBoxesTest extends org.scalatest.FunSuite {
   test("ChecksumBoxes.matchingLetters returns empty string if more than one letter mismatched") {
     assert(ChecksumBoxes.matchingLetters("abcdef", "zzcdef") === "")
   }
+
+  test("ChecksumBoxes.findCloseMatch returns two labels that are only one letter off") {
+    assert(ChecksumBoxes.findCloseMatch(List("abcde","fghij","klmno","pqrst","fguij","axcye","wvxyz")) === "fgij")
+  }
 }
