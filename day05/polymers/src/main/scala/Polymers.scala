@@ -1,4 +1,12 @@
+import scala.io.Source
+
 object Polymers extends App {
+  val filename = args(0)
+  println("Reading polymer data from file: " + filename)
+  val polymers = readFromFile(filename)
+  val condensedPolymer = condense(polymers.head)
+  println("Resulting polymer contains " + condensedPolymer.length + " units")
+
   def condense(polymers: String) : String = {
     var currentString = polymers
     var droppedCharacters = true
@@ -24,5 +32,9 @@ object Polymers extends App {
       }
     }
     charArray.mkString
+  }
+
+  def readFromFile(fileName: String): List[String] = {
+    Source.fromFile(fileName).getLines.toList
   }
 }
