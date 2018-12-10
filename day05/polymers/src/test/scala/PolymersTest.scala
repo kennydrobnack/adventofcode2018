@@ -10,4 +10,8 @@ class PolymersTest extends org.scalatest.FunSuite {
   test("Polymers.readFromFile reads in polymers from a file") {
       assert(Polymers.readFromFile("test.txt") === List("dabCBAcaDA", "dabAcCaCBAcCcaDA"))
   }
+
+  test("Polymers.getUniqueList gets a list of unique polymers") {
+    assert(Polymers.getUniqueList("dabAcCaCBAcCcaDA") === List('a', 'b', 'c', 'd'))
+  }
 }

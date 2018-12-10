@@ -23,6 +23,10 @@ object Polymers extends App {
     currentString
   }
 
+  def getUniqueList(polymerString: String) : List[Char] = {
+    polymerString.toList.map(letter => letter.toLower).distinct.sorted
+  }
+
   def dropMatchingCharacters(updateString: String): String = {
     var charArray = updateString.toArray
     var i = 0
