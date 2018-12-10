@@ -3,7 +3,11 @@ class PolymersTest extends org.scalatest.FunSuite {
     assert(Polymers.condense("dabCBAcaDA") === "dabCBAcaDA")
   }
 
-  test("Polymer.condense removes any adjacent matching upper & lowercase letters") {
+  test("Polymers.condense removes any adjacent matching upper & lowercase letters") {
     assert(Polymers.condense("dabAcCaCBAcCcaDA") === "dabCBAcaDA")
+  }
+
+  test("Polymers.readFromFile reads in polymers from a file") {
+      assert(Polymers.readFromFile("test.txt") === List("dabCBAcaDA", "dabAcCaCBAcCcaDA"))
   }
 }
