@@ -14,4 +14,8 @@ class PolymersTest extends org.scalatest.FunSuite {
   test("Polymers.getUniqueList gets a list of unique polymers") {
     assert(Polymers.getUniqueList("dabAcCaCBAcCcaDA") === List('a', 'b', 'c', 'd'))
   }
+
+  test("dropAllMatchingCharactersInPolymer returns polymer with all instances of one character dropped") {
+    assert(Polymers.dropAllMatchingCharactersInPolymer("dabAcCaCBAcCcaDA", "a") === "dbcCCBcCcD")
+  }
 }

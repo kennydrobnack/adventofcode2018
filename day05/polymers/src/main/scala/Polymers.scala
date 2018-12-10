@@ -27,6 +27,10 @@ object Polymers extends App {
     polymerString.toList.map(letter => letter.toLower).distinct.sorted
   }
 
+  def dropAllMatchingCharactersInPolymer(polymerString: String, polymerToDrop: String): String = {
+    polymerString.replaceAll(polymerToDrop.toLowerCase, "").replaceAll(polymerToDrop.toUpperCase, "")
+  }
+
   def dropMatchingCharacters(updateString: String): String = {
     var charArray = updateString.toArray
     var i = 0
