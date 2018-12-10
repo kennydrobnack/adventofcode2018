@@ -4,8 +4,10 @@ object Polymers extends App {
   val filename = args(0)
   println("Reading polymer data from file: " + filename)
   val polymers = readFromFile(filename)
-  val condensedPolymer = condense(polymers.head)
+  val fullPolymer = polymers.head
+  val condensedPolymer = condense(fullPolymer)
   println("Resulting polymer contains " + condensedPolymer.length + " units")
+  println("Shortest possible polymer when dropping one before reactions: " + calculatesShortestPolymer(fullPolymer))
 
   def condense(polymers: String) : String = {
     var currentString = polymers
