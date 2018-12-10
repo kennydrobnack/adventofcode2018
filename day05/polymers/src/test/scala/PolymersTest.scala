@@ -18,4 +18,12 @@ class PolymersTest extends org.scalatest.FunSuite {
   test("dropAllMatchingCharactersInPolymer returns polymer with all instances of one character dropped") {
     assert(Polymers.dropAllMatchingCharactersInPolymer("dabAcCaCBAcCcaDA", "a") === "dbcCCBcCcD")
   }
+
+  test("dropSinglePolymerThenFullyReact returns polymer with single polymer dropped then fully reacted") {
+    assert(Polymers.dropSinglePolymerThenFullyReact("dabAcCaCBAcCcaDA", "a") === "dbCBcD")
+  }
+
+  test("calculatesShortestPolymer") {
+    assert(Polymers.calculatesShortestPolymer("dabAcCaCBAcCcaDA") === 4)
+  }
 }

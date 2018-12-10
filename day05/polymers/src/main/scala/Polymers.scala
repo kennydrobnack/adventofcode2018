@@ -31,6 +31,20 @@ object Polymers extends App {
     polymerString.replaceAll(polymerToDrop.toLowerCase, "").replaceAll(polymerToDrop.toUpperCase, "")
   }
 
+  def dropSinglePolymerThenFullyReact(polymerString: String, polymerToDrop: String): String = {
+    val results = condense(dropAllMatchingCharactersInPolymer(polymerString, polymerToDrop))
+    println("Size of result when dropping '" + polymerToDrop + "' before reacting: " + results.length)
+    results
+  }
+
+  def calculatesShortestPolymer(polymer: String): Integer = {
+    val results = getUniqueList(polymer).map(p => 
+      dropSinglePolymerThenFullyReact(polymer, p.toString).length
+    )
+    println("Results: " + results)
+    results.min
+  }
+
   def dropMatchingCharacters(updateString: String): String = {
     var charArray = updateString.toArray
     var i = 0
