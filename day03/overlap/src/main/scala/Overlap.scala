@@ -1,5 +1,7 @@
+import scala.io.Source
+
 object Overlap extends App {
-  def overlappingSquares(x: Int) = {
-    x
+  def readFromFile(fileName: String): List[String] = {
+    Source.fromFile(fileName).getLines.toList
   }
 }
