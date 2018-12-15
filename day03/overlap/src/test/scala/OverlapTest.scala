@@ -27,4 +27,8 @@ class OverlapTest extends org.scalatest.FunSuite {
       List(5,7) -> "#"
     ))
   }
+
+  test("It counts how many cuts overlap") {
+    assert(Overlap.countOverlaps(List("#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2")) === 4)
+  }
 }

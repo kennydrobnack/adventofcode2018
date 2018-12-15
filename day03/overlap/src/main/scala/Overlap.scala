@@ -27,4 +27,11 @@ object Overlap extends App {
   def createRow(firstColumn: Int, lastColumn: Int, rowNumber : Int) :Map[List[Int], String] = {
     (firstColumn to lastColumn).map{ e => List(e, rowNumber) -> "#" }.toMap
   }
+
+  def countOverlaps(claims: List[String]) : Int = {
+    val fabricCuts = claims.map( cut => cutFabric(cut))
+    println("All fabric cuts: " + fabricCuts)
+    val allCuts = claims.map( claim => claim.keys)
+    fabricCuts.size
+  }
 }
