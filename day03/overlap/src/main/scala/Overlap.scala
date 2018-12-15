@@ -1,6 +1,13 @@
 import scala.io.Source
 
 object Overlap extends App {
+  val filename = args(0)
+  println("Calculating overlapping fabric cuts from file: " + filename)
+  val claims = readFromFile(filename)
+  println("Running...")
+  val numberOfOverlappingCuts = countOverlaps(claims)
+  println("Total number of overlapping cuts: " + numberOfOverlappingCuts)
+
   def readFromFile(fileName: String): List[String] = {
     Source.fromFile(fileName).getLines.toList
   }
@@ -30,8 +37,10 @@ object Overlap extends App {
 
   def countOverlaps(claims: List[String]) : Int = {
     val fabricCuts = claims.map( cut => cutFabric(cut))
-    println("All fabric cuts: " + fabricCuts)
-    val allCuts = claims.map( claim => claim.keys)
-    fabricCuts.size
+    var allCuts = List[List[Int]]()
+    for ( c <- fabricCuts ) {
+      allCuts ++= c.keys
+    }
+    allCuts.groupBy(identity).mapValues(_.size).filter{e => e._2 > 1}.size
   }
 }
